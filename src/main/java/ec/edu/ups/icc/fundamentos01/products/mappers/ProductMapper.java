@@ -1,19 +1,27 @@
 package ec.edu.ups.icc.fundamentos01.products.mappers;
 
+import ec.edu.ups.icc.fundamentos01.products.dtos.CreateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
-import ec.edu.ups.icc.fundamentos01.products.entities.Product;
+import ec.edu.ups.icc.fundamentos01.products.entities.ProductEntity;
 
 public class ProductMapper {
     
-    public static Product toEntity(int id, String name, Double price) {
-        return new Product(id, name, price, "no descripción");
+    public static ProductEntity toEntity(CreateProductDto dto) {
+        ProductEntity entity = new ProductEntity();
+        entity.setName(dto.name);
+        entity.setDescription(dto.description);
+        entity.setPrice(dto.price);
+        entity.setStock(dto.stock);
+        return entity;
     }
 
-    public static ProductResponseDto toResponse (Product product) {
+    public static ProductResponseDto toResponse (ProductEntity entity) {
         ProductResponseDto dto = new ProductResponseDto();
-        dto.id = product.getId();
-        dto.name = product.getName();
-        dto.price = product.getPrice();
+        dto.id = entity.getId().intValue();
+        dto.name = entity.getName();
+        dto.description = entity.getDescription();
+        dto.price = entity.getPrice();
+        dto.stock = entity.getStock();
         return dto;
     }
 }

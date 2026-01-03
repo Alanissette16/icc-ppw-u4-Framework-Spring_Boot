@@ -1,18 +1,24 @@
 package ec.edu.ups.icc.fundamentos01.users.mappers;
 
+import ec.edu.ups.icc.fundamentos01.users.dtos.CreateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.UserResponseDto;
-import ec.edu.ups.icc.fundamentos01.users.entities.User;
+import ec.edu.ups.icc.fundamentos01.users.entities.UserEntity;
 
 public class UserMapper {
-    public static User toEntity(int id, String name, String email) {
-        return new User(id, name, email, "secret");
+
+    public static UserEntity toEntity(CreateUserDto dto) {
+        UserEntity entity = new UserEntity();
+        entity.setName(dto.name);
+        entity.setEmail(dto.email);
+        entity.setPassword(dto.password);
+        return entity;
     }
 
-    public static UserResponseDto toResponse(User user) {
+    public static UserResponseDto toResponse(UserEntity entity) {
         UserResponseDto dto = new UserResponseDto();
-        dto.id = user.getId();
-        dto.name = user.getName();
-        dto.email = user.getEmail();
+        dto.id = entity.getId().intValue();
+        dto.name = entity.getName();
+        dto.email = entity.getEmail();
         return dto;
     }
 }

@@ -1,0 +1,222 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes. Error detail: AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:44), pid=8680, tid=16728
+#
+# JRE version:  (17.0.17+10) (build )
+# Java VM: OpenJDK 64-Bit Server VM (17.0.17+10, mixed mode, emulated-client, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Dfile.encoding=windows-1252 -Duser.country=EC -Duser.language=es -Duser.variant ec.edu.ups.icc.fundamentos01.Fundamentos01Application
+
+Host: Intel(R) Core(TM) i3-1005G1 CPU @ 1.20GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+Time: Tue Dec 30 22:42:07 2025 Hora est. Pacífico, Sudamérica elapsed time: 0.010917 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000020d45ea2dd0):  JavaThread "Unknown thread" [_thread_in_vm, id=16728, stack(0x0000004da8200000,0x0000004da8300000)]
+
+Stack: [0x0000004da8200000,0x0000004da8300000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x683fb9]
+V  [jvm.dll+0x83a1b5]
+V  [jvm.dll+0x83bc2e]
+V  [jvm.dll+0x83c2b3]
+V  [jvm.dll+0x248eff]
+V  [jvm.dll+0xa7b47]
+V  [jvm.dll+0x2dbe46]
+V  [jvm.dll+0x80c68f]
+V  [jvm.dll+0x36e841]
+V  [jvm.dll+0x7eb2a5]
+V  [jvm.dll+0x3f444b]
+V  [jvm.dll+0x3f5f31]
+C  [jli.dll+0x52d0]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17374]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff938377f58, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000020d45ea2dd0 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=16728, stack(0x0000004da8200000,0x0000004da8300000)]
+
+Threads with active compile tasks:
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000000000000, size: 0 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+<Empty>
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.007 Loaded shared library C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff742b00000 - 0x00007ff742b0e000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\java.exe
+0x00007ff9d6390000 - 0x00007ff9d6588000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ff9d43b0000 - 0x00007ff9d4472000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ff9d3d60000 - 0x00007ff9d405e000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ff9d42b0000 - 0x00007ff9d43b0000 	C:\Windows\System32\ucrtbase.dll
+0x00007ff9a8000000 - 0x00007ff9a801e000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\VCRUNTIME140.dll
+0x00007ff9a7980000 - 0x00007ff9a7998000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\jli.dll
+0x00007ff9d5350000 - 0x00007ff9d54ed000 	C:\Windows\System32\USER32.dll
+0x00007ff9d3b80000 - 0x00007ff9d3ba2000 	C:\Windows\System32\win32u.dll
+0x00007ff9bf550000 - 0x00007ff9bf7ea000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ff9d5760000 - 0x00007ff9d578b000 	C:\Windows\System32\GDI32.dll
+0x00007ff9d56c0000 - 0x00007ff9d575e000 	C:\Windows\System32\msvcrt.dll
+0x00007ff9d3a60000 - 0x00007ff9d3b77000 	C:\Windows\System32\gdi32full.dll
+0x00007ff9d4060000 - 0x00007ff9d40fd000 	C:\Windows\System32\msvcp_win.dll
+0x00007ff9d5690000 - 0x00007ff9d56bf000 	C:\Windows\System32\IMM32.DLL
+0x00007ff9a7f60000 - 0x00007ff9a7f6c000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\vcruntime140_1.dll
+0x00007ff9a44f0000 - 0x00007ff9a457d000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\msvcp140.dll
+0x00007ff937840000 - 0x00007ff9384ab000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\server\jvm.dll
+0x00007ff9d4af0000 - 0x00007ff9d4ba1000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ff9d4760000 - 0x00007ff9d47ff000 	C:\Windows\System32\sechost.dll
+0x00007ff9d5af0000 - 0x00007ff9d5c13000 	C:\Windows\System32\RPCRT4.dll
+0x00007ff9d3a30000 - 0x00007ff9d3a57000 	C:\Windows\System32\bcrypt.dll
+0x00007ff9d48b0000 - 0x00007ff9d491b000 	C:\Windows\System32\WS2_32.dll
+0x00007ff9d3890000 - 0x00007ff9d38db000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ff9bf820000 - 0x00007ff9bf847000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ff9cc6d0000 - 0x00007ff9cc6da000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ff9d3870000 - 0x00007ff9d3882000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ff9d2210000 - 0x00007ff9d2222000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ff9a7680000 - 0x00007ff9a768a000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\jimage.dll
+0x00007ff9d1620000 - 0x00007ff9d1804000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ff9bb4d0000 - 0x00007ff9bb504000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ff9d3bb0000 - 0x00007ff9d3c32000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ff9a1e90000 - 0x00007ff9a1eb5000 	C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin\server
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Dfile.encoding=windows-1252 -Duser.country=EC -Duser.language=es -Duser.variant 
+java_command: ec.edu.ups.icc.fundamentos01.Fundamentos01Application
+java_class_path (initial): C:\Users\Admin\Desktop\PPW\Fundamentos01_U4\fundamentos01\build\classes\java\main;C:\Users\Admin\Desktop\PPW\Fundamentos01_U4\fundamentos01\build\resources\main;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-devtools\4.0.0\dda2d0f369837f2616505f488fd79d2cf31edda3\spring-boot-devtools-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.postgresql\postgresql\42.7.8\81b840fbfe0a6c0b7aa14c6bd4856108d36ed780\postgresql-42.7.8.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-autoconfigure\4.0.0\5348987fff66867326396839a066e0c2e52ee989\spring-boot-autoconfigure-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-webmvc\4.0.0\35fdec70f3a33fb7574c866cb02f1a5caab0b2b5\spring-boot-webmvc-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-http-converter\4.0.0\1fde20003c5fa88ac3feecbfa315b0ab3cc53b0c\spring-boot-http-converter-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-data-jpa\4.0.0\11ea418c8e230c94a31613b4b0eb079be897d98\spring-boot-data-jpa-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-hibernate\4.0.0\f7d3969e5149722daa273d10dff0dd7f6eb0a550\spring-boot-hibernate-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-jpa\4.0.0\f94bb13dd5900631e7f1011b261e6265fc6f79dd\spring-boot-jpa-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-jdbc\4.0.0\72d2a7541ee7864c0e52cc3da44ac31b6f948487\spring-boot-jdbc-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-jackson\4.0.0\ce6c55e2dc62422bf57ce38692b6a8adcd31aa13\spring-boot-jackson-4.0.0.jar;C:\Users\Admin\.gradle\caches\modules-2\files-2.1\org.springframework.boot\spring-boot-servlet\4.0.
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 130023424                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2080374784                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+     bool ProfileInterpreter                       = false                                  {pd product} {command line}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2080374784                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                           {product lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot
+PATH=C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin;C:\Program Files\PowerShell\7;C:\Users\Admin\AppData\Roaming\Code\User\globalStorage\pleiades.java-extension-pack-jdk\java\latest\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.17.10-hotspot\bin;C:\Program Files\Oracle Client for Microsoft Tools\;C:\app\Admin\product\21c\dbhomeXE\bin;C:\Python312\Scripts\;C:\Python312\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-22\bin;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\R2025b\bin;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;;C:\Program Files\Docker\Docker\resources\bin;C:\Users\Admin\AppData\Local\pnpm;C:\Users\Admin\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Java\jdk-22\bin;C:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Admin\AppData\Roaming\npm;C:\Users\Admin\.lmstudio\bin;c:\Users\Admin\.vscode\extensions\vscjava.vscode-java-debug-0.58.4\bundled\scripts\noConfigScripts;c:\Users\Admin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand
+USERNAME=Admin
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
+TMP=C:\Users\Admin\AppData\Local\Temp
+TEMP=C:\Users\Admin\AppData\Local\Temp
+
+
+
+Periodic native trim disabled
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+OS uptime: 0 days 6:57 hours
+Hyper-V role detected
+
+CPU: total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 126 stepping 5 microcode 0x78, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, avx512f, avx512dq, avx512cd, avx512bw, avx512vl, sha, fma, vzeroupper, avx512_vpopcntdq, avx512_vpclmulqdq, avx512_vaes, avx512_vnni, clflush, clflushopt, avx512_vbmi2, avx512_vbmi, hv
+Processor Information for all 4 processors :
+  Max Mhz: 1190, Current Mhz: 1190, Mhz Limit: 1190
+
+Memory: 4k page, system-wide physical 7934M (189M free)
+TotalPageFile size 16126M (AvailPageFile size 5M)
+current process WorkingSet (physical memory assigned to process): 9M, peak: 9M
+current process commit charge ("private bytes"): 6M, peak: 7M
+
+vm_info: OpenJDK 64-Bit Server VM (17.0.17+10) for windows-amd64 JRE (17.0.17+10), built on Oct 21 2025 23:25:32 by "admin" with unknown MS VC++:1942
+
+END.
