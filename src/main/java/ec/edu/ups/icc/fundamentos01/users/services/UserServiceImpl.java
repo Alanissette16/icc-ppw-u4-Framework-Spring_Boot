@@ -10,6 +10,7 @@ import ec.edu.ups.icc.fundamentos01.users.dtos.UpdateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.UserResponseDto;
 import ec.edu.ups.icc.fundamentos01.users.entities.UserEntity;
 import ec.edu.ups.icc.fundamentos01.users.mappers.UserMapper;
+import ec.edu.ups.icc.fundamentos01.users.models.User;
 import ec.edu.ups.icc.fundamentos01.users.repositories.UserRepository;
 
 @Service
@@ -39,9 +40,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto create(CreateUserDto dto) {
-        UserEntity user = UserMapper.toEntity(dto);
-        UserEntity saved = userRepo.save(user);
-        return UserMapper.toResponse(saved);
+    // Regla: email único
+    if (userRepo.findByEmail(dto.email).isPresent()) {
+        throw new IllegalStateException("El email ya está registrado");
+    }
+    User user = User.fromDto(dto);
+    UserEntity saved = userRepo.save(user.toEntity());
+    return User.fromEntity(saved).toResponseDto();
+
     }
 
     @Override

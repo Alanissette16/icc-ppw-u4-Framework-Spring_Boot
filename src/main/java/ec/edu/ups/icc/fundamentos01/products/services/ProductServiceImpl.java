@@ -10,6 +10,7 @@ import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.UpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.entities.ProductEntity;
 import ec.edu.ups.icc.fundamentos01.products.mappers.ProductMapper;
+import ec.edu.ups.icc.fundamentos01.products.models.Product;
 import ec.edu.ups.icc.fundamentos01.products.repositories.ProductRepository;
 
 
@@ -42,9 +43,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto create(CreateProductDto dto) {
-        ProductEntity product = ProductMapper.toEntity(dto);
-        ProductEntity saved = productRepo.save(product);
-        return ProductMapper.toResponse(saved);
+
+        Product product = Product.fromDto(dto);
+        ProductEntity saved = productRepo.save(product.toEntity());
+        return Product.fromEntity(saved).toResponseDto();
     }
 
     @Override

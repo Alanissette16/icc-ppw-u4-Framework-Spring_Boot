@@ -4,6 +4,8 @@ import ec.edu.ups.icc.fundamentos01.core.entities.BaseModel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "users")
@@ -17,6 +19,9 @@ public class UserEntity extends BaseModel {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     // Getters y Setters
     public String getName() {
@@ -42,4 +47,10 @@ public class UserEntity extends BaseModel {
         this.password = password;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }

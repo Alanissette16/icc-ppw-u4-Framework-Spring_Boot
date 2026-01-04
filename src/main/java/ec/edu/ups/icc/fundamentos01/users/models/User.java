@@ -1,5 +1,7 @@
 package ec.edu.ups.icc.fundamentos01.users.models;
 
+import java.time.LocalDateTime;
+
 import ec.edu.ups.icc.fundamentos01.users.dtos.CreateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.PartialUpdateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.UpdateUserDto;
@@ -12,13 +14,25 @@ public class User {
     private String name;
     private String email;
     private String password;
+    public LocalDateTime createdAt;
 
     /// Constructores 
-    public User(int id, String name, String email, String password) {
+    public User(int id, String name, String email, String password, LocalDateTime createdAt) {
+
+        if (name == null || name.isBlank())
+            throw new IllegalArgumentException("Nombre inválido");
+
+        if (email == null || !email.contains("@"))
+            throw new IllegalArgumentException("Email inválido");
+
+        if (password == null || password.length() < 8)
+            throw new IllegalArgumentException("Password inválido");
+
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.createdAt = createdAt;
     }
     // Getters y Setters
     public int getId() {
@@ -59,6 +73,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     // ==================== FACTORY METHODS ====================
 
@@ -67,7 +87,8 @@ public class User {
             0,
             dto.name,
             dto.email,
-            dto.password
+            dto.password,
+            LocalDateTime.now()
         );
     }
 
@@ -76,7 +97,8 @@ public class User {
             entity.getId().intValue(),
             entity.getName(),
             entity.getEmail(),
-            entity.getPassword()
+            entity.getPassword(),
+            entity.getCreatedAt()
         );
     }
 
@@ -90,6 +112,13 @@ public class User {
         entity.setName(this.name);
         entity.setEmail(this.email);
         entity.setPassword(this.password);
+
+        if (this.createdAt == null) {
+        entity.setCreatedAt(LocalDateTime.now());
+        } else {
+        entity.setCreatedAt(this.createdAt);
+        }
+
         return entity;
     }
 
@@ -98,6 +127,7 @@ public class User {
         dto.id = this.id;
         dto.name = this.name;
         dto.email = this.email;
+        dto.createdAt = this.createdAt;
         return dto;
     }
 
