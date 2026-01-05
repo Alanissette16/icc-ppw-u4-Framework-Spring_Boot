@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ec.edu.ups.icc.fundamentos01.exception.domain.ConflictException;
+import ec.edu.ups.icc.fundamentos01.exception.domain.NotFoundException;
 import ec.edu.ups.icc.fundamentos01.products.dtos.CreateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.PartialUpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.UpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.entities.ProductEntity;
 import ec.edu.ups.icc.fundamentos01.products.mappers.ProductMapper;
-import ec.edu.ups.icc.fundamentos01.products.models.Product;
 import ec.edu.ups.icc.fundamentos01.products.repositories.ProductRepository;
 
 
@@ -35,18 +36,25 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDto findOne(int id) {
 
-        ProductEntity product = productRepo.findById((long) id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-
-        return ProductMapper.toResponse(product);
+        return productRepo.findById((long) id)
+        .map(ProductMapper::toResponse)
+        .orElseThrow(() -> new NotFoundException("Producto no encontrado")
+        );
     }
 
     @Override
     public ProductResponseDto create(CreateProductDto dto) {
 
-        Product product = Product.fromDto(dto);
-        ProductEntity saved = productRepo.save(product.toEntity());
-        return Product.fromEntity(saved).toResponseDto();
+        if (productRepo.existsByName(dto.name)) {
+        throw new ConflictException(
+            "Ya existe un producto con el nombre: " + dto.name
+        );
+    }
+
+    ProductEntity entity = ProductMapper.toEntity(dto);
+    ProductEntity saved = productRepo.save(entity);
+
+    return ProductMapper.toResponse(saved);
     }
 
     @Override

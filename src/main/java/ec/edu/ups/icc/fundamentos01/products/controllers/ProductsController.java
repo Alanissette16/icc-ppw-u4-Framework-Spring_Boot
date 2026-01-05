@@ -2,6 +2,8 @@ package ec.edu.ups.icc.fundamentos01.products.controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,27 +38,33 @@ public class ProductsController {
     }
 
     @GetMapping("/{id}")
-    public ProductResponseDto findOne(@PathVariable int id) {
-        return service.findOne(id);
+    public ResponseEntity<ProductResponseDto> findOne(@PathVariable int id) {
+        return ResponseEntity.ok(service.findOne(id));
     }
 
     @PostMapping
-    public ProductResponseDto create(@Valid @RequestBody CreateProductDto dto) {
-        return service.create(dto);
+    public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody CreateProductDto dto) {
+        ProductResponseDto created = service.create(dto);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(created);
     }
 
     @PutMapping("/{id}")
-    public ProductResponseDto update(@PathVariable int id, @RequestBody UpdateProductDto dto) {
-        return service.update(id, dto);
+    public ResponseEntity<ProductResponseDto> update(@PathVariable int id, @RequestBody UpdateProductDto dto) {
+        ProductResponseDto updated = service.update(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @PatchMapping("/{id}")
-    public ProductResponseDto partialUpdate(@PathVariable int id, @RequestBody PartialUpdateProductDto dto) {
-        return service.partialUpdate(id, dto);
+    public ResponseEntity<ProductResponseDto> partialUpdate(@PathVariable int id, @RequestBody PartialUpdateProductDto dto) {
+         ProductResponseDto updated = service.partialUpdate(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

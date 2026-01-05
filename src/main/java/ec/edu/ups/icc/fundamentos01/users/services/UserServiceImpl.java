@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ec.edu.ups.icc.fundamentos01.exception.domain.NotFoundException;
 import ec.edu.ups.icc.fundamentos01.users.dtos.CreateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.PartialUpdateUserDto;
 import ec.edu.ups.icc.fundamentos01.users.dtos.UpdateUserDto;
@@ -32,10 +33,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDto findOne(int id) {
-        UserEntity user = userRepo.findById((long) id)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        return UserMapper.toResponse(user);
+        return userRepo.findById((long) id)
+            .map(UserMapper::toResponse)
+            .orElseThrow(() -> new NotFoundException("Usuario no encontrado")
+        );
     }
 
     @Override

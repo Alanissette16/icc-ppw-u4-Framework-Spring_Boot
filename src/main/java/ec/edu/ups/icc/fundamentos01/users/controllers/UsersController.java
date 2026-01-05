@@ -2,6 +2,8 @@ package ec.edu.ups.icc.fundamentos01.users.controllers;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,30 +38,36 @@ public class UsersController {
     }
 
     @GetMapping("/{id}")
-    public UserResponseDto findOne(@PathVariable int id) {
-        return service.findOne(id);       
+    public ResponseEntity<UserResponseDto> findOne(@PathVariable int id) {
+       return ResponseEntity.ok(service.findOne(id));     
     }
 
     @PostMapping
-    public UserResponseDto create(@Valid @RequestBody CreateUserDto dto) {
-        return service.create(dto);
+    public ResponseEntity<UserResponseDto> create(@Valid @RequestBody CreateUserDto dto) {
+        UserResponseDto created = service.create(dto);
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+            .body(created);
     }
 
     @PutMapping("/{id}")
-    public UserResponseDto update(@PathVariable int id, @RequestBody UpdateUserDto dto) {
-        return service.update(id, dto);
+    public ResponseEntity<UserResponseDto> update(@PathVariable int id, @RequestBody UpdateUserDto dto) {
+        UserResponseDto updated = service.update(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
 
     @PatchMapping("/{id}")
-    public UserResponseDto partialUpdate(@PathVariable int id, @RequestBody PartialUpdateUserDto dto) {
-        return service.partialUpdate(id, dto);
+    public ResponseEntity<UserResponseDto> partialUpdate(@PathVariable int id, @RequestBody PartialUpdateUserDto dto) {
+        UserResponseDto updated = service.partialUpdate(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable int id) {
+    public ResponseEntity<Void> delete(@PathVariable int id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
   
 }
