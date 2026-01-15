@@ -14,4 +14,9 @@ public class UpdateProductDto {
     public double price;
     @Min(0)
     public int stock;
+
+    public Long categoryId;
+    /// No puedo actualizar el dueño del producto
+    /// public Long userId;
+
 }

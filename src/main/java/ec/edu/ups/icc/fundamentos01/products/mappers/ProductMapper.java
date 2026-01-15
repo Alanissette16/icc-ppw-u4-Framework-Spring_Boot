@@ -17,7 +17,6 @@ public class ProductMapper {
 
     public static ProductResponseDto toResponse (ProductEntity entity) {
         ProductResponseDto dto = new ProductResponseDto();
-        dto.id = entity.getId().intValue();
         dto.name = entity.getName();
         dto.description = entity.getDescription();
         dto.price = entity.getPrice();

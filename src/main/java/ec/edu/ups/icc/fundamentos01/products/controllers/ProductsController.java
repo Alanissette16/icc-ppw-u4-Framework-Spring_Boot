@@ -18,6 +18,7 @@ import ec.edu.ups.icc.fundamentos01.products.dtos.CreateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.PartialUpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.UpdateProductDto;
+import ec.edu.ups.icc.fundamentos01.products.dtos.ValidateProductNameDTO;
 import ec.edu.ups.icc.fundamentos01.products.services.ProductService;
 import jakarta.validation.Valid;
 
@@ -67,4 +68,11 @@ public class ProductsController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/validate-name")
+    public ResponseEntity<ProductResponseDto> validateName(@RequestBody ValidateProductNameDTO dto) {
+        ProductResponseDto product = service.validateName(dto.id, dto.name);
+        return ResponseEntity.ok(product);
+    }
+    
 }
