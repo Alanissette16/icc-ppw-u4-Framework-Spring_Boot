@@ -35,14 +35,14 @@ public class ProductEntity extends BaseModel {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity owner; /// -> ENTIDAD
 
+    /// ===================== MANY-TO-ONE (1:N) =====================
     /// Con Categorias donde una categoria puede tener muchos productos
     /// muchos productos pertenecen a una categoria
-    /// Descomentar para que funcione el PARTE A ManyToOne (1:N) ***************
     // @ManyToOne(optional = false, fetch = FetchType.LAZY) 
     // @JoinColumn(name = "category_id", nullable = false) 
     // private CategoryEntity category; 
 
-    // PARTE B(N:N)
+    /// ===================== MANY-TO-MANY (N:N) =====================
     @ManyToMany
     @JoinTable(name = "product_categories",
     joinColumns = @JoinColumn(name = "product_id"),
@@ -94,15 +94,15 @@ public class ProductEntity extends BaseModel {
         this.stock = stock;
     }
 
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
     // public CategoryEntity getCategory() {
     //     return category;
     // }
-
     // public void setCategory(CategoryEntity category) {
     //     this.category = category;
     // }
-    
 
+    // ===================== MANY-TO-MANY (N:N) =====================
     public Set<CategoryEntity> getCategories() {
         return categories;
     }
@@ -110,6 +110,4 @@ public class ProductEntity extends BaseModel {
     public void setCategories(Set<CategoryEntity> categories) {
         this.categories = categories;
     }
-
-
 }

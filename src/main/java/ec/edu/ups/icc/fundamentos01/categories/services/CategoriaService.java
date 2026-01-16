@@ -9,6 +9,7 @@ import ec.edu.ups.icc.fundamentos01.categories.dtos.CreateCategoriaDTO;
 public interface CategoriaService {
     
     CategoriaResponseDTO create(CreateCategoriaDTO categoria);
-    // long countProducts(Long categoryId); //Parte C
-
+    
+    // ===================== FUTURAS MEJORAS =====================
+    // long countProducts(Long categoryId);
 }

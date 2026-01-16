@@ -67,21 +67,18 @@ public class Product {
         return entity;
     }
 
-    // Parte A************
-    // public ProductEntity toEntity(UserEntity owner, CategoryEntity
-    // categoryEntity) {
-    // ProductEntity entity = new ProductEntity();
-    // entity.setName(name);
-    // entity.setPrice(price);
-    // entity.setStock(stock);
-
-    // entity.setOwner(owner);
-    // entity.setCategory(categoryEntity);
-
-    // return entity;
+    // ===================== MANY-TO-ONE (1:N) =====================
+    // public ProductEntity toEntity(UserEntity owner, CategoryEntity categoryEntity) {
+    //     ProductEntity entity = new ProductEntity();
+    //     entity.setName(name);
+    //     entity.setPrice(price);
+    //     entity.setStock(stock);
+    //     entity.setOwner(owner);
+    //     entity.setCategory(categoryEntity);
+    //     return entity;
     // }
 
-    // Parte B************
+    // ===================== MANY-TO-MANY (N:N) =====================
     public ProductEntity toEntity(UserEntity owner, Set<CategoryEntity> categories) {
         ProductEntity entity = new ProductEntity();
 

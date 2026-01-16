@@ -16,13 +16,20 @@ public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
     List<ProductEntity> findByOwnerId(Long userId);
     List<ProductEntity> findByOwnerName(String name);
-    // Parte A
-    List<ProductEntity> findByCategoryId(Long categoryId);
     
-    // Parte B
-    List<ProductEntity> findByCategoryIdAndPriceGreaterThan(Long categoryId, Double price); /// precio mayor a
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
+    // List<ProductEntity> findByCategoryId(Long categoryId);
     
-    //Parte C
+    // ===================== MANY-TO-MANY (N:N) =====================
+    // Búsqueda de productos por categoría con precio mayor a
+    @Query("""
+        SELECT DISTINCT p FROM ProductEntity p
+        JOIN p.categories c
+        WHERE c.id = :categoryId AND p.price > :price
+    """)
+    List<ProductEntity> findByCategoryIdAndPriceGreaterThan(@Param("categoryId") Long categoryId, @Param("price") Double price);
+    
+    // ===================== FUTURAS MEJORAS =====================
     // @Query("""
     //     SELECT COUNT(p)
     //     FROM ProductEntity p

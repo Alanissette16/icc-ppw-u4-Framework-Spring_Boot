@@ -36,25 +36,20 @@ public class ProductServiceImpl implements ProductService {
         this.categoryRepo = categoryRepo;
     }
 
-    // ===================== PARTE A (1:N) =====================
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
     // @Override
     // public ProductResponseDto create(CreateProductDto dto) {
-
     //     UserEntity owner = userRepo.findById(dto.userId)
     //             .orElseThrow(() -> new NotFoundException("Usuario no existe"));
-
     //     CategoryEntity categoria = categoryRepo.findById(dto.categoryId)
     //             .orElseThrow(() -> new NotFoundException("Categoria no existe"));
-
     //     Product newProduct = Product.fromDto(dto);
     //     ProductEntity entity = newProduct.toEntity(owner, categoria);
-
     //     ProductEntity saved = productRepo.save(entity);
-
     //     return toResponseDTO(saved);
     // }
 
-    // ===================== PARTE B (N:N) =====================
+    // ===================== MANY-TO-MANY (N:N) =====================
     @Override
     public ProductResponseDto create(CreateProductDto dto) {
 
@@ -96,13 +91,13 @@ public class ProductServiceImpl implements ProductService {
         ownerDTO.username = entity.getOwner().getName();
         dto.user = ownerDTO;
 
-        // ---------- PARTE A
+        // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
         // CategoriaResponseDTO categoryDTO = new CategoriaResponseDTO();
         // categoryDTO.id = entity.getCategory().getId();
         // categoryDTO.name = entity.getCategory().getName();
         // dto.category = categoryDTO;
 
-        // ---------- PARTE B
+        // ===================== MANY-TO-MANY (N:N) =====================
         dto.categories = entity.getCategories()
                 .stream()
                 .map(cat -> {
@@ -190,7 +185,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponseDto> findByCategory(Long categoryId) {
-        return productRepo.findByCategoryId(categoryId)
+        return productRepo.findByCategoryIdAndPriceGreaterThan(categoryId, 0.0)
                 .stream()
                 .map(ProductMapper::toResponse)
                 .toList();

@@ -34,7 +34,7 @@ public class ProductMapper {
             dto.user = userDto;
         }
 
-        //PARTE A
+        // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
         // if (entity.getCategory() != null) {
         //     CategoriaResponseDTO catDto = new CategoriaResponseDTO();
         //     catDto.id = entity.getCategory().getId();
@@ -43,7 +43,7 @@ public class ProductMapper {
         //     dto.category = catDto;
         // }
         
-        //PARTE B
+        // ===================== MANY-TO-MANY (N:N) =====================
         if (entity.getCategories() != null) {
             dto.categories = entity.getCategories()
                     .stream()

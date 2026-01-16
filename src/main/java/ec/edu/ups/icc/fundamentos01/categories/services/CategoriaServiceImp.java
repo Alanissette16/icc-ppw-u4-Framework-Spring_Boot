@@ -8,7 +8,6 @@ import ec.edu.ups.icc.fundamentos01.categories.dtos.CreateCategoriaDTO;
 import ec.edu.ups.icc.fundamentos01.categories.entities.CategoryEntity;
 import ec.edu.ups.icc.fundamentos01.categories.repositories.CategoryRepository;
 import ec.edu.ups.icc.fundamentos01.exception.domain.ConflictException;
-import ec.edu.ups.icc.fundamentos01.exception.domain.NotFoundException;
 import ec.edu.ups.icc.fundamentos01.products.repositories.ProductRepository;
 
 
@@ -44,13 +43,12 @@ public class CategoriaServiceImp implements CategoriaService {
 
         return dto;
     }
-    // PARTE C
+    
+    // ===================== FUTURAS MEJORAS =====================
     // @Override
     // public long countProducts(Long categoryId) {
-
     //     categoryRepository.findById(categoryId)
     //             .orElseThrow(() -> new NotFoundException("Categoría no existe"));
-
     //     return productRepository.countProductsByCategory(categoryId);
     // }
 }

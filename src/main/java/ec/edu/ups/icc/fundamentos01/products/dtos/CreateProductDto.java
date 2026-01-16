@@ -20,11 +20,12 @@ public class CreateProductDto {
     
     @NotNull(message = "El ID del usuario es obligatorio")
     public Long userId;
-    // Parte A************
+    
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
     // @NotNull(message = "El ID de la categoría es obligatorio")
     // public Long categoryId;
     
-    // Parte B************
+    // ===================== MANY-TO-MANY (N:N) =====================
     @NotNull(message = "El ID de la categoría es obligatorio")
     public Set<Long> categoryIds;
 

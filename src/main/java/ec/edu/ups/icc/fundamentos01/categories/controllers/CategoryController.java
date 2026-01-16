@@ -1,12 +1,12 @@
 package ec.edu.ups.icc.fundamentos01.categories.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+// import org.springframework.web.bind.annotation.GetMapping;
+// import org.springframework.web.bind.annotation.PathVariable;
 
 import ec.edu.ups.icc.fundamentos01.categories.dtos.CategoriaResponseDTO;
 import ec.edu.ups.icc.fundamentos01.categories.dtos.CreateCategoriaDTO;
@@ -29,7 +29,7 @@ public class CategoryController {
         return ResponseEntity.ok(service.create(dto));
     }
 
-    // PARTE C
+    // ===================== FUTURAS MEJORAS =====================
     // @GetMapping("/{id}/products/count")
     // public ResponseEntity<Long> countProducts(@PathVariable Long id) {
     //     return ResponseEntity.ok(service.countProducts(id));

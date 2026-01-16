@@ -47,6 +47,7 @@ public class ProductsController {
         return service.findByUser(userId);
     }
 
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
     // @GetMapping("/category/{categoryId}")
     // public List<ProductResponseDto> byCategory(@PathVariable Long categoryId) {
     //     return service.findByCategory(categoryId);

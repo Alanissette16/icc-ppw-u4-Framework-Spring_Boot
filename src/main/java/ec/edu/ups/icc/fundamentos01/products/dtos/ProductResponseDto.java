@@ -14,12 +14,13 @@ public class ProductResponseDto {
     public LocalDateTime createdAt;
     public LocalDateTime updatedAt;
 
-    //PARTE A
-    // aparezca sus categorias y su dueño
+    // Usuario que posee el producto
     public UserSummaryDTO user;
+    
+    // ===================== MANY-TO-ONE (1:N) - COMENTADO =====================
     // public CategoriaResponseDTO category;
     
-    //PARTE B
+    // ===================== MANY-TO-MANY (N:N) =====================
     public List<CategoriaResponseDTO> categories;
 
     public static class UserSummaryDTO {
