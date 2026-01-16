@@ -1,8 +1,8 @@
 package ec.edu.ups.icc.fundamentos01.products.models;
 
-import java.time.LocalDateTime;
+import java.util.Set;
 
-import ec.edu.ups.icc.fundamentos01.categories.entity.CategoryEntity;
+import ec.edu.ups.icc.fundamentos01.categories.entities.CategoryEntity;
 import ec.edu.ups.icc.fundamentos01.products.dtos.CreateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.PartialUpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
@@ -32,8 +32,9 @@ public class Product {
         this.name = name;
         this.price = price;
         this.stock = stock;
-        
+
     }
+
     // Sin ID
     public Product(String name, double price, int stock) {
         this.name = name;
@@ -42,8 +43,6 @@ public class Product {
     }
 
     // ---------- FACTORIES ----------
-    
-
 
     public static Product fromDto(CreateProductDto dto) {
         return new Product(dto.name, dto.price, dto.stock);
@@ -55,32 +54,42 @@ public class Product {
                 entity.getName(),
                 entity.getPrice(),
                 entity.getStock()
-                
+
         );
     }
 
     public ProductEntity toEntity() {
         ProductEntity entity = new ProductEntity();
-        if (id > 0) entity.setId((long) id);
         entity.setName(name);
         entity.setPrice(price);
         entity.setStock(stock);
 
-        if (this.createdAt == null) {
-        entity.setCreatedAt(LocalDateTime.now());
-        }
         return entity;
     }
 
-    public ProductEntity toEntity(UserEntity owner, CategoryEntity categoryEntity) {
+    // Parte A************
+    // public ProductEntity toEntity(UserEntity owner, CategoryEntity
+    // categoryEntity) {
+    // ProductEntity entity = new ProductEntity();
+    // entity.setName(name);
+    // entity.setPrice(price);
+    // entity.setStock(stock);
+
+    // entity.setOwner(owner);
+    // entity.setCategory(categoryEntity);
+
+    // return entity;
+    // }
+
+    // Parte B************
+    public ProductEntity toEntity(UserEntity owner, Set<CategoryEntity> categories) {
         ProductEntity entity = new ProductEntity();
-        if (id > 0) entity.setId((long) id);
+
         entity.setName(name);
         entity.setPrice(price);
         entity.setStock(stock);
-
         entity.setOwner(owner);
-        entity.setCategory(categoryEntity);
+        entity.setCategories(categories);
 
         return entity;
     }
@@ -101,9 +110,12 @@ public class Product {
     }
 
     public void partialUpdate(PartialUpdateProductDto dto) {
-        if (dto.name != null) this.name = dto.name;
-        if (dto.price != null) this.price = dto.price;
-        if (dto.stock != null) this.stock = dto.stock;
+        if (dto.name != null)
+            this.name = dto.name;
+        if (dto.price != null)
+            this.price = dto.price;
+        if (dto.stock != null)
+            this.stock = dto.stock;
     }
 
 }

@@ -5,8 +5,7 @@ import java.util.List;
 import ec.edu.ups.icc.fundamentos01.products.dtos.CreateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.PartialUpdateProductDto;
 import ec.edu.ups.icc.fundamentos01.products.dtos.ProductResponseDto;
-import ec.edu.ups.icc.fundamentos01.products.dtos.UpdateProductDto;
-import ec.edu.ups.icc.fundamentos01.products.entities.ProductEntity;  
+import ec.edu.ups.icc.fundamentos01.products.dtos.UpdateProductDto;  
 
 public interface ProductService {
     
@@ -23,5 +22,6 @@ public interface ProductService {
     void delete(int id);
 
     ProductResponseDto validateName(int id, String name);
-
+    List<ProductResponseDto> findByUser(Long userId);
+    List<ProductResponseDto> findByCategory(Long categoryId);
 }

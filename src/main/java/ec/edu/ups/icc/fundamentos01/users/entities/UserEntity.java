@@ -20,9 +20,6 @@ public class UserEntity extends BaseModel {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
     // Getters y Setters
     public String getName() {
         return name;
@@ -47,10 +44,4 @@ public class UserEntity extends BaseModel {
         this.password = password;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
 }
